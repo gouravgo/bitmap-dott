@@ -23,6 +23,7 @@ Input:<br />
 Output <br />
 3 2 1 0 <br />
 2 1 0 0 <br />
+1 0 0 1 <br />
 
 
 ## Instructions
@@ -45,6 +46,6 @@ or if you want to skip the tests and build:
     npm run start
 ```
 
-This will leave the Standand Input listening to the user's input. Copy and Paste your examples and press Enter. You can find an example [here](./input-example.txt).
+This will leave the Standand Input listening to the user's input. Copy and Paste your examples and press Enter. You can find an example [here](./testInputOutput.txt).
 
 Once you press enter, the results will be printed in your terminal and the process will finish.
