@@ -103,9 +103,10 @@ export class TestParser {
 
     private BFS(test: Test) : Promise<Test> {
         return new Promise(resolve => {
-            test.solution = test.data.map(inner => inner.slice()); //solution varaible can also be used as a visitor in BFS
+            //solution varaible can also be used as a visitor in BFS
+            test.solution = test.data.map(inner => inner.slice()); //created a shallow copy of data
             let queue = [];
-            let directions = [[0,1], [1,0], [0,-1], [-1,0]]; //four valid directions to move
+            let directions = [[0,1], [1,0], [0,-1], [-1,0]]; //four valid directions to move. <, > ,^, v 
 
             //push the indexes in queue which has value 1.
             for(let i=0; i<test.data.length; i++){
@@ -115,8 +116,15 @@ export class TestParser {
                     }
                 }
             }
+
             //start from the white pixels and move towards the black by Breadth First Search algo, and add distance by 1 from the prev index
-            let firstIteration = 1;//this flag is true for the first iteration because our first BFS iterarion is not inremented with the prev value and it should be 1
+            /** NOTE :- For first iteration, value should be 1 and after that add distance by 1 from the prev index
+             * For Example
+                0001        0011        0211        3211
+                0011  -->   0111  -->   2111 -->    2111
+                0110        1111        1111        1111
+            */
+            let firstIteration = 1;//this flag is true for the first iteration because first BFS iterarion is not inrcemented with the prev value and it should be 1
             while(queue.length){
                 const size = queue.length;
                 for(let i=0; i<size; i++){
@@ -134,8 +142,12 @@ export class TestParser {
                 }
                 firstIteration = 0;
             }
-
             //Now change initial white pixels to black
+            /**
+                3211        3210
+                2111  -->   2100
+                1111        1001
+            */
             for(let i=0; i<test.data.length; i++){
                 for(let j=0; j<test.data[i].length; j++){
                     if(test.data[i][j]){

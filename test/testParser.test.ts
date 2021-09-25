@@ -58,7 +58,7 @@ test('isValidTestCaseRow() returns false when row has more columns', () => {
     expect(testParser.isValidTestCaseRow(secondLine, lastTestParsed)).toBe(false);
 });
 
-test('isValidTestCaseRow() returns false when there every element or row is not integer', () => {
+test('isValidTestCaseRow() returns false when every element in row is not integer', () => {
     const testParser = new TestParser("Test");
     testParser.testsHandler.testsNumber = 1
     testParser.testsHandler.addTest(2,2);
@@ -68,7 +68,7 @@ test('isValidTestCaseRow() returns false when there every element or row is not 
     expect(testParser.isValidTestCaseRow(secondLine, lastTestParsed)).toBe(false);
 });
 
-test('isValidTestCaseRow() returns false when there every element or row is not integer', () => {
+test('isValidTestCaseRow() returns false when add row in testcase which is not defined yet', () => {
     const testParser = new TestParser("Test");
     testParser.testsHandler.testsNumber = 1
     const lastTestParsed = testParser.testsHandler.lastTest();
